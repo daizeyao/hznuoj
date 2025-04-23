@@ -276,7 +276,7 @@ $str2=$str2."&jresult=".strval($jresult_get);
         const problem_description = (await getProblemString(problemId)).replace(/`/g, '\\`');
         const source_code = await getSourceCode(solutionId);
         if (!chatbox || !chatbox.chatCore || !chatbox.chatCore.isStop) return;
-        const prompt = `请你使用C语言帮我解决问题，题目具体详情如下，${problem_description}，下面是一份错误代码${source_code}`;
+        const prompt = `下面是一道ACM模式下的编程题目，题目详情如下：${problem_description}，下面是一份错误代码${source_code}，请你结合C语言相关知识，帮助学生找出代码中的错误并给出解决方案。`;
         chatbox.openAndChat(prompt, `Solution ${solutionId}纠错`, '你是C语言编程助手');
     });
 </script>

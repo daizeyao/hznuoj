@@ -82,7 +82,8 @@ if (empty($system_instruction)) {
 // ]);
 $chat = new AICore([
     // "url" => "http://$AI_HOST:". (rand(1, 100) <= 50 ? "8000" : "8001") ."/v1/chat/completions",
-    "url" => "http://$AI_HOST:8000/v1/chat/completions",
+    "url" => "http://$AI_HOST/vllm/api/v1/chat/completions",
+    "api_key" => "$AI_API_KEY",
     "model" => "$AI_MODEL_VLLM",
     "type" => "vllm-chat",
     "stream" => true

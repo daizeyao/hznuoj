@@ -518,7 +518,7 @@ pre.prettyprint{
     $('#ai-code-tips').click(() => {
         if(!chatbox || !chatbox.chatCore || !chatbox.chatCore.isStop) return;
         const problem_description = `<?php echo str_replace('`', '\`', sss($row->description) . sss($row->input) . sss($row->output)) ?>`;
-        const prompt = `${problem_description}请你使用C语言解决这道题目`;
+        const prompt = `下面是一道ACM模式下的编程题目，题目详情如下：${problem_description}，请你使用C语言解决这道题目`;
         chatbox.openAndChat(prompt, `<?php echo $row->title ?>`);
     });
 </script>

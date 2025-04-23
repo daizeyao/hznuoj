@@ -282,7 +282,7 @@ $result->free();
         }
     }
 
-    function importModalInit(){
+    function importModalInit() {
         $('#stu-id-excel').val('');
         $('#stu-id-input').val('');
         $('#analyze-result').html('');

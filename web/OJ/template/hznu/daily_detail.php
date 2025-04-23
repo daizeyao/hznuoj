@@ -227,7 +227,7 @@ HTML;
   chatbox.add();
   $('#ai-study-gen').click(() => {
     if (!chatbox || !chatbox.chatCore || !chatbox.chatCore.isStop) return;
-    const prompt = `你现在是一名指导老师，您所在的班级中一名学生的学习情况如下：` +
+    const prompt = `你现在是一名指导老师，你所在的班级中一名学生的学习情况如下：` +
       `\n\n全时间段通过题目数量：<?php echo $total_problems ?> 道` +
       `\n最近一个月通过题目数量：<?php echo $month_problems ?> 道` +
       `\n最近一周通过题目数量：<?php echo $week_problems ?> 道` +

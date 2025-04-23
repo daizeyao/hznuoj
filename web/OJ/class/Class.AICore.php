@@ -4,6 +4,7 @@ require_once  __DIR__ . '/Class.StreamHandler.php';
 class AICore
 {
     private $api_url = '';
+    private $api_key = '';
     private $streamHandler;
     private $system;
     private $tip;
@@ -17,9 +18,10 @@ class AICore
     public function __construct($params)
     {
         $this->api_url = $params['url'];
+        $this->api_key = $params['api_key'];
         $this->model = $params['model'];
         $this->api_type = $params['type'];
-        $this->more_params = array_diff_key($params, array_flip(['url', 'model', 'type']));
+        $this->more_params = array_diff_key($params, array_flip(['url', 'api_key', 'model', 'type']));
     }
 
     public function set_dfa(&$dfa)
@@ -90,6 +92,9 @@ class AICore
         // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // 如果不是HTTPS请求，可以注释或删除此行
         curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+
+        // 添加身份验证头
+        $headers[] = 'Authorization: Bearer ' . $this->api_key;
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         curl_setopt($ch, CURLOPT_WRITEFUNCTION, [$this->streamHandler, 'callback']);
